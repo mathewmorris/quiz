@@ -4,9 +4,42 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Helvetica, arial, sans-serif;
+}
+
 header {
     display: flex; 
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 0px 20px;
+    font-size: 20px
+}
+
+.quiz {
+    width: 40%;
+    text-align: center;
+    margin: 30%;
+    line-height: 1.2;
+    margin-top: 15%;
+    
+}
+
+.quiz h1 {
+font-size: 55px;
+}
+
+.quiz p {
+    font-size: 25px;
+}
+
+.quiz button {
+    font-size: 25px;
+    color: orange;
+    background-color: black;
+    border: none;
+    margin: 10px;
+    padding: 18px 28px;
+    border-radius: 10px;
 }
