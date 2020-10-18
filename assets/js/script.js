@@ -22,7 +22,27 @@ function countdown() {
 
 
 function buildQuiz() {
+
+    //once start quiz is clicked, the first question appears
     var firstQuestion = document.getElementById("question").innerHTML = "Who invented Javascript?";
+
+    //remove the original paragraph
+    var oldParagraph = document.getElementById("oldText");
+    oldParagraph.remove();
+
+    //creates a button for an answer
+    var answerOne = document.createElement("button");
+    document.getElementById("question").appendChild(answerOne);
+
+    var answerTwo = document.createElement("button");
+    document.getElementById("question").appendChild(answerTwo);
+    
+    var answerThree = document.createElement("button");
+    document.getElementById("question").appendChild(answerThree);
+
+    var answerFour = document.createElement("button");
+    document.getElementById("question").appendChild(answerFour);
+
 }
 
 
