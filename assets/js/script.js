@@ -1,11 +1,11 @@
 //once button is clicked quiz questions appear and timer starts
 var timerEl = document.getElementById('timer');
 var startBtn = document.getElementById('start');
-
 var btnOne = document.createElement("button");
 var btnTwo = document.createElement("button");
 var btnThree = document.createElement("button");
 var btnFour = document.createElement("button");
+
 
 
 //function that runs the countdown timer
@@ -38,39 +38,38 @@ var questions = [
     },
     
     {
-        question: "Stinky?",
+        question: "Smelly?",
         answers: ["yes", "no","duh", "of course"],
         correct: "yes"
     },
     
     {
-        question: "Stinky?",
+        question: "Gross?",
         answers: ["yes", "no","duh", "of course"],
         correct: "yes"
     },
     
     {
-        question: "Stinky?",
+        question: "Nasty?",
         answers: ["yes", "no","duh", "of course"],
         correct: "yes"
     },
     
     {
-        question: "Stinky?",
+        question: "Icky?",
         answers: ["yes", "no","duh", "of course"],
         correct: "yes"
     },
     
     {
-        question: "Stinky?",
+        question: "Rotten?",
         answers: ["yes", "no","duh", "of course"],
         correct: "yes"
     },
     
     ];
     
-
-
+    
 
 //function that loops through the questions and their answers
 function nextQuestion() {
@@ -84,27 +83,25 @@ function nextQuestion() {
         oldParagraph.remove();
 
         //answers for the question
-        var answerOne = document.createElement("button");
-        btnOne.textContent = questions[startQuestions].answers[0];
-        answerOne.appendChild(btnOne);
+        var answerOne = questions[startQuestions].answers[0];
+        btnOne.textContent = answerOne;
+        
+        var answerTwo = questions[startQuestions].answers[1];
+        btnTwo.textContent = answerTwo;
 
-        var answerTwo = document.createElement("button");
-        btnOne.textContent = questions[startQuestions].answers[1];
-        answerOne.appendChild(btnTwo);
+        var answerThree = questions[startQuestions].answers[2];
+        btnThree.textContent = answerThree;
 
-        var answerThree = document.createElement("button");
-        btnOne.textContent = questions[startQuestions].answers[2];
-        answerOne.appendChild(btnThree);
+        var answerFour = questions[startQuestions].answers[3];
+        btnFour.textContent = answerFour;
 
-        var answerFour = document.createElement("button");
-        btnOne.textContent = questions[startQuestions].answers[3];
-        answerOne.appendChild(btnFour);
+
 
         quiz.appendChild(questionTitle);
-        quiz.appendChild(answerOne);
-        quiz.appendChild(answerTwo);
-        quiz.appendChild(answerThree);
-        quiz.appendChild(answerFour);
+        quiz.appendChild(btnOne);
+        quiz.appendChild(btnTwo);
+        quiz.appendChild(btnThree);
+        quiz.appendChild(btnFour);
 
 
     }
