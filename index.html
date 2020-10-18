@@ -8,16 +8,20 @@
 </head>
 <body>
     <header>
+        
         <h3 class="high-scores">View High Scores</h3>
+        <div class="timer">
+        <h3>Time:</h3>
         <h3 id="timer"></h3>
+        </div>
     </header>
-    <section class="quiz">
+    <section class="quiz-container">
 
         <div class="title">
-        <h1>Coding Quiz Challenge</h1>
+        <h1 id="question">Coding Quiz Challenge</h1>
         </div>
 
-        <div class="description">
+        <div id ="answers" class="description">
         <p>Try to answer the following coding related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         </div>
         <button id="start">Start Quiz</button>

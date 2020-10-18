@@ -20,7 +20,19 @@ function countdown() {
     }, 1000);
 }
 
-console.log(countdown());
+
+function buildQuiz() {
+    var firstQuestion = document.getElementById("question").innerHTML = "Who invented Javascript?";
+}
+
+
+
+
+
+
+
+startBtn.addEventListener("click", buildQuiz);
+startBtn.addEventListener("click", countdown);
 
 //a question appears with multiple choices for answers
 
@@ -36,4 +48,3 @@ console.log(countdown());
 
 
 //once start is clicked, the timer starts
-startBtn.onClick = countdown;

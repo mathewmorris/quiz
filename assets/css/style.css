@@ -18,24 +18,26 @@ header {
     padding-top: 15px;
 }
 
-.quiz {
+.quiz-container {
     width: 40%;
     text-align: center;
     margin: 30%;
     line-height: 1.2;
     margin-top: 15%;
-    
+    background-color: orange;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-.quiz h1 {
+.quiz-container h1 {
 font-size: 55px;
 }
 
-.quiz p {
+.quiz-container p {
     font-size: 25px;
 }
 
-.quiz button {
+.quiz-container button {
     font-size: 25px;
     color: orange;
     background-color: black;
@@ -43,4 +45,11 @@ font-size: 55px;
     margin: 10px;
     padding: 18px 28px;
     border-radius: 10px;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    right: 20px;
 }
