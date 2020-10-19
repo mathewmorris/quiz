@@ -1,73 +1,72 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Helvetica, arial, sans-serif;
-    background-color: black;
+  font-family: Helvetica, arial, sans-serif;
+  background-color: black;
 }
 
 header {
-    display: flex; 
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    font-size: 20px;
-    padding-top: 15px;
-    background-color: orange;
-    color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  font-size: 20px;
+  padding-top: 15px;
+  background-color: orange;
+  color: black;
 }
 
 header a {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
-
 .quiz-container {
-    width: 40%;
-    text-align: center;
-    margin: 30%;
-    line-height: 1.2;
-    margin-top: 15%;
-    background-color: orange;
-    border-radius: 10px;
-    padding: 20px;
+  width: 40%;
+  text-align: center;
+  margin: 30%;
+  line-height: 1.2;
+  margin-top: 15%;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .quiz-container h1 {
-font-size: 55px;
+  font-size: 55px;
 }
 
 .quiz-container p {
-    font-size: 25px;
-    font-weight: bold;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .quiz-container button {
-    font-size: 25px;
-    color: orange;
-    background-color: black;
-    border: none;
-    margin: 10px;
-    padding: 18px 28px;
-    border-radius: 10px;
+  font-size: 25px;
+  color: orange;
+  background-color: black;
+  border: none;
+  margin: 10px;
+  padding: 18px 28px;
+  border-radius: 10px;
 }
 
 .quiz-container button:hover {
-    background-color: grey;
+  background-color: grey;
 }
 
 .timer {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    right: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  right: 20px;
 }
 
-
-
-
+.hidden {
+  display: nones;
+}

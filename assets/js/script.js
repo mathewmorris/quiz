@@ -1,163 +1,191 @@
-//once button is clicked quiz questions appear and timer starts
-var timerEl = document.getElementById('timer');
-var startBtn = document.getElementById('start');
+// Grab all elements for easy selection later.
+var timerEl = document.getElementById("timer");
+var startBtn = document.getElementById("start");
+var introEl = document.getElementById("intro");
+var quizContainer = document.getElementById("quiz");
+var questionTitle = document.getElementById("question");
+var answersEl = document.getElementById("answers");
+var statusEl = document.getElementById("status");
+var resetButton = document.getElementById("resetButton");
 
-
-var btnOne = document.createElement("button");
-btnOne.id = "btn";
-var btnTwo = document.createElement("button");
-btnOne.id = "btn";
-var btnThree = document.createElement("button");
-btnOne.id = "btn";
-var btnFour = document.createElement("button");
-btnOne.id = "btn";
-
-//function that runs the countdown timer
-function countdown() {
-    var timeInterval = setInterval(function () {
-        if (timeLeft >= 1) {
-            timerEl.textContent = timeLeft;
-            timeLeft = timeLeft - 1;
-        }
-
-        if (timeLeft === 0) {
-            timerEl.textContent = '';
-        }
-
-
-    }, 1000);
-}
-var score = 0;
-var startQuestions = 0;
+// Setup the timer
+var timer;
 var penalty = 5;
 var timeLeft = 60;
-
-var questions = [
-    
-    {
-        question: "Stinky?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    {
-        question: "Smelly?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    {
-        question: "Gross?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    {
-        question: "Nasty?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    {
-        question: "Icky?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    {
-        question: "Rotten?",
-        answers: ["yes", "no","duh", "of course"],
-        correct: "yes"
-    },
-    
-    ];
-    
-
-//function that loops through the questions and their answers
-function nextQuestion() {
-
-    if (startQuestions < questions.length) {
-        
-        var oldParagraph = document.getElementById("oldText");
-        oldParagraph.remove();
-
-        for (var i = 0; i < questions.length; i++) {
-
-        var questionTitle = document.getElementById("question");
-        questionTitle.textContent = questions[startQuestions].question;
-
-        //answers for the question
-        var answerOne = questions[startQuestions].answers[0];
-        btnOne.textContent = answerOne;
-        
-        var answerTwo = questions[startQuestions].answers[1];
-        btnTwo.textContent = answerTwo;
-
-        var answerThree = questions[startQuestions].answers[2];
-        btnThree.textContent = answerThree;
-
-        var answerFour = questions[startQuestions].answers[3];
-        btnFour.textContent = answerFour;
-        
-
-        quiz.appendChild(questionTitle);
-        quiz.appendChild(btnOne);
-        quiz.appendChild(btnTwo);
-        quiz.appendChild(btnThree);
-        quiz.appendChild(btnFour);
-
-        btnOne.addEventListener("click", checkAnswers);
-        btnTwo.addEventListener("click", checkAnswers);
-        btnThree.addEventListener("click", checkAnswers);
-        btnFour.addEventListener("click", checkAnswers);
-
-        } 
-    } 
-}
-      
-
-function checkAnswers() {
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "createDiv");
-
-        var correctAnswer = questions[startQuestions].correct;
-        var input = document.getElementById('btn');
-        var userInput = input.textContent
-
-
-        // correct answer
-        if (userInput.onclick === correctAnswer) {
-            score++;
-            createDiv.textContent = "Correct!" 
-            // incorrect answer
-        } else {
-            timeLeft = timeLeft - penalty;
-            createDiv.textContent = "Incorrect";
-        }
-
+function countdown() {
+  timer = setInterval(function () {
+    if (timeLeft >= 1) {
+      timerEl.textContent = timeLeft;
+      timeLeft = timeLeft - 1;
     }
 
-startBtn.addEventListener("click", countdown);
-startBtn.addEventListener("click", nextQuestion);
+    if (timeLeft === 0) {
+      timerEl.textContent = "";
+    }
+  }, 1000);
+}
 
+var quiz = [
+  {
+    question: "Stinky?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 0,
+  },
 
+  {
+    question: "Smelly?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 1,
+  },
 
+  {
+    question: "Gross?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 2,
+  },
 
+  {
+    question: "Nasty?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 3,
+  },
 
+  {
+    question: "Icky?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 1,
+  },
 
+  {
+    question: "Rotten?",
+    answers: ["yes", "no", "duh", "of course"],
+    correct: 2,
+  },
+];
 
+// Setup quiz status
+var current = 0;
+var currentQuestion = quiz[current];
+var score = 0;
 
+// Clears the #status element
+function clearStatus() {
+  statusEl.innerText = null;
+}
 
+// Toggles visibility of an element.
+function toggleElement(element) {
+  if (element.classList.contains("hidden")) {
+    element.classList.remove("hidden");
+  } else {
+    element.classList.add("hidden");
+  }
+}
 
-//if question is answered correctly, "correct!" appears, then moves onto
-// next question
+// Reset quiz back to default settings
+function resetQuiz() {
+  // reset quiz status
+  current = 0;
+  score = 0;
+  currentQuestion = quiz[current];
 
-//if a question is answered incorrectly "incorrect!" appears,
-// and 5 seconds are deducted from the timer
+  // reset timer
+  timeLeft = 60;
 
-//quiz ends once time runs out
+  // Reset text
+  questionTitle.innerText = "Coding Quiz Challenge";
+  answersEl.innerHTML = null;
 
-//score is displayed with option to enter intials and log to localstorage 
+  // Show intro
+  toggleElement(introEl);
 
+  // Hide reset button
+  toggleElement(resetButton);
+}
 
-//once start is clicked, the timer starts.
+// Add onclick to reset button
+resetButton.onclick = function () {
+  resetQuiz();
+};
+
+function showResults() {
+  questionTitle.innerText = "Results";
+  answersEl.innerHTML =
+    "You got " +
+    score +
+    " out of " +
+    quiz.length +
+    " right! That's " +
+    Math.floor((score / quiz.length) * 100) +
+    "%";
+
+  // shows reset button
+  toggleElement(resetButton);
+
+  // stops timer
+  clearInterval(timer);
+
+  // Clear status
+  clearStatus();
+}
+
+function nextQuestion() {
+  // Go to next question
+  current++;
+  currentQuestion = quiz[current];
+
+  // Update DOM
+  updateQuestion(currentQuestion.question);
+  updateAnswers(currentQuestion.answers);
+}
+
+// Updates Question Text
+function updateQuestion(text) {
+  questionTitle.innerText = text;
+}
+
+// Increase score if correct, reduce time if incorrect
+function checkAnswer(idx) {
+  if (idx === currentQuestion.correct) {
+    score++;
+    statusEl.innerText = "Correct!";
+  } else {
+    timeLeft = timeLeft - penalty;
+    statusEl.innerText = "Incorrect. -" + penalty + " seconds!";
+  }
+}
+
+// Replaces old answers with new
+function updateAnswers(answers) {
+  // empty answers
+  answersEl.innerHTML = null;
+
+  // add answers
+  answers.forEach((answer, idx) => {
+    var button = document.createElement("button");
+
+    button.innerText = answer;
+    button.onclick = () => {
+      checkAnswer(idx);
+      if (current + 1 < quiz.length) {
+        nextQuestion();
+      } else {
+        showResults();
+      }
+    };
+    answersEl.append(button);
+  });
+}
+
+function startQuiz() {
+  // start countdown
+  countdown();
+  // hide intro
+  toggleElement(introEl);
+
+  // Start the quiz with first question
+  updateQuestion(currentQuestion.question);
+  updateAnswers(currentQuestion.answers);
+}
+
+startBtn.addEventListener("click", startQuiz);
