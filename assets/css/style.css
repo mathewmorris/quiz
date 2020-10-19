@@ -70,3 +70,7 @@ header a {
 .hidden {
   display: none;
 }
+
+#scoreButton:hover {
+  cursor: pointer;
+}
